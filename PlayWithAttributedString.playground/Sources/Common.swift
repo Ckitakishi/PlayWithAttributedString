@@ -66,3 +66,9 @@ public extension Array where Element == StringAttribute {
         return attributesDict
     }
 }
+
+public extension NSAttributedString {
+    convenience init(string str: String, stringAttributes attrs: [StringAttribute]) {
+        self.init(string: str, attributes: attrs.attributesDictionary)
+    }
+}

@@ -3,5 +3,6 @@
     <pages>
         <page name='Episode1'/>
         <page name='Episode2A'/>
+        <page name='Episode2B'/>
     </pages>
 </playground>
