@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import UIKit
 import PlaygroundSupport
 
@@ -29,7 +27,7 @@ label.attributedText = NSAttributedString(
 label.sizeToFit()
 containerView.addSubview(label)
 
-// We could build a type-safe wrapper for NSAttributedString
+// Build a type-safe wrapper for NSAttributedString
 enum ParagraphAttribute {
     case alignment(NSTextAlignment)
     case lineSpacing(CGFloat)
@@ -119,5 +117,3 @@ label2.attributedText = NSAttributedString(
 
 label2.sizeToFit()
 containerView.addSubview(label2)
-
-//: [Next](@next)
