@@ -26,6 +26,7 @@ struct AttributedString {
     }
 }
 
+// [StringInterpolation] Using StringInterpolation to help build NSAttributedString
 extension AttributedString: ExpressibleByStringLiteral {
     init(stringLiteral: String) {
         self.attributedString = NSAttributedString(string: stringLiteral)
@@ -57,6 +58,7 @@ extension AttributedString: ExpressibleByStringInterpolation {
             self.attributedString.append(attrString)
         }
         
+        // for UIImage
         mutating func appendInterpolation(image: UIImage, offsetX: CGFloat, offsetY: CGFloat, scale: CGFloat = 1.0) {
             let attachment = NSTextAttachment()
             

@@ -24,6 +24,7 @@ extension NSAttributedString {
     }
 }
 
+// [Enum] Define attributes using enum to help build NSAttributedString
 enum AttributedString {
     case string(String, [StringAttribute]?)
     case image(UIImage, offsetX: CGFloat = 0.0, offsetY: CGFloat = 0.0, scale: CGFloat = 1.0)

@@ -8,7 +8,6 @@ let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
 PlaygroundPage.current.liveView = containerView
 containerView.backgroundColor = .white
 
-// ##################################################
 // Normal
 let label = UILabel()
 
@@ -30,7 +29,6 @@ label.attributedText = NSAttributedString(
 label.sizeToFit()
 containerView.addSubview(label)
 
-// ##################################################
 // We could build a type-safe wrapper for NSAttributedString
 enum ParagraphAttribute {
     case alignment(NSTextAlignment)
