@@ -56,6 +56,20 @@ extension AttributedString: ExpressibleByStringInterpolation {
                                                 stringAttributes: stringAttributes)
             self.attributedString.append(attrString)
         }
+        
+        mutating func appendInterpolation(image: UIImage, offsetX: CGFloat, offsetY: CGFloat, scale: CGFloat = 1.0) {
+            let attachment = NSTextAttachment()
+            
+            let size: CGSize = {
+                guard scale != 1.0 else { return image.size }
+                return image.size.applying(CGAffineTransform(scaleX: scale, y: scale))
+            }()
+            
+            attachment.bounds = .init(origin: .init(x: offsetX, y: offsetY), size: size)
+            attachment.image = image
+        
+            self.attributedString.append(NSAttributedString(attachment: attachment))
+        }
     }
 }
 
@@ -66,6 +80,7 @@ var attrString1: AttributedString = """
 """
 
 let attrString2: AttributedString = """
+\(image: UIImage(named: "stop") ?? UIImage(), offsetX: 0.0, offsetY: 0.0, scale: 0.5)
 \("再过秋天", stringAttributes: [ .foregroundColor(.systemGray3), .font(.systemFont(ofSize: 14.0)) ])
 \("烂了蜿蜒", stringAttributes: [ .foregroundColor(.systemGray4), .font(.systemFont(ofSize: 14.0)) ])
 """
