@@ -12,7 +12,17 @@ struct AttributedString {
     var attributedString: NSAttributedString
     
     mutating func append(_ newStr: AttributedString) {
-        self.attributedString = attributedString + newStr.attributedString
+        let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
+        mutableAttributedString.append(newStr.attributedString)
+        self.attributedString = mutableAttributedString
+    }
+    
+    mutating func append(contentsOf newStrs: [AttributedString]) {
+        let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
+        newStrs.forEach { str in
+            mutableAttributedString.append(str.attributedString)
+        }
+        self.attributedString = mutableAttributedString
     }
 }
 
@@ -46,14 +56,6 @@ extension AttributedString: ExpressibleByStringInterpolation {
                                                 stringAttributes: stringAttributes)
             self.attributedString.append(attrString)
         }
-    }
-}
-
-extension NSAttributedString {
-    static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-        let mutableAttributedString = NSMutableAttributedString(attributedString: lhs)
-        mutableAttributedString.append(rhs)
-        return mutableAttributedString
     }
 }
 
